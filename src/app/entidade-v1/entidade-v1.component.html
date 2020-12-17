@@ -1,0 +1,218 @@
+<main class="container">
+  <div class="starter-template py-5 px-3">
+    <h2>Entidades</h2>
+
+    <form class="row g-3">
+      <div class="col-auto">
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          placeholder="Procurar entidade"
+        />
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
+      </div>
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col"></th>
+          <th scope="col">Nome</th>
+          <th scope="col">Visão</th>
+          <th scope="col">Ativo?</th>
+          <th scope="col">Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of countries; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </td>
+          <td>{{ country.nome }}</td>
+          <td>{{ country.publico }}</td>
+          <td>{{ country.ativo }}</td>
+          <td>
+            <div class="btn-group btn-group-toggle">
+              <label class="btn-primary" ngbButtonLabel>
+                <input type="checkbox" (click)="openLg(content)" />
+                Editar
+              </label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<!-- /.container -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Editar Entidades</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- nome da entidade -->
+    <div class="row" style="margin-bottom: 20px">
+      <div class="col-12">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Nome da Entidade</label
+        >
+      </div>
+      <div class="col-12">
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          value="Marcelo Freixo"
+        />
+      </div>
+    </div>
+    <!-- nome da entidade -->
+
+    <!-- fonte de dados -->
+    <div class="row" style="margin-bottom: 20px">
+      <div class="col-12">
+        <label for="exampleFormControlInput1" class="form-label"
+          >Fonte de dados</label
+        >
+      </div>
+      <div class="col-4">
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Facebook"
+        />
+      </div>
+      <div class="col-4">
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Instagram"
+        />
+      </div>
+      <div class="col-4">
+        <input
+          type="text"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Youtube"
+        />
+      </div>
+    </div>
+    <!-- nome da entidade -->
+
+    <!-- hierarquie -->
+    <div class="row">
+      <!-- <div class="col-12">
+        <div class="alert alert-success" role="alert">
+          Selected books: {{ values }}
+        </div>
+      </div> -->
+      <div class="col-12">
+        <div class="row">
+          <!-- <div class="col-lg-4 col-sm-12">
+        <div class="form-group">
+          <label>
+            <strong>Configuration</strong>
+          </label>
+          <ng esdiv class="form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="config.hasAllCheckBox" id="hasAllCheckBox">
+            <label class="form-check-label" for="hasAllCheckBox">hasAllCheckBox</label>
+          </ng>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="config.hasFilter" id="hasFilter">
+            <label class="form-check-label" for="hasFilter"> hasFilter</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="config.hasCollapseExpand"
+              id="hasCollapseExpand">
+            <label class="form-check-label" for="hasCollapseExpand">hasCollapseExpand</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="config.decoupleChildFromParent"
+              id="decoupleChildFromParent">
+            <label class="form-check-label" for="decoupleChildFromParent">decoupleChildFromParent</label>
+          </div>
+          <div class="form-inline">
+            <div class="form-group">
+              <label for="maxHeight">maxHeight</label>
+              <input type="text" class="form-control mx-sm-3" id="maxHeight" placeholder="maxHeight"
+                [(ngModel)]="config.maxHeight">
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+          <!-- <div class="col-lg-4 col-sm-12"> -->
+          <div class="col-12">
+            <div class="form-group">
+              <label>
+                <strong> Hierarquia </strong>
+              </label>
+              <ngx-treeview
+                [config]="config"
+                [items]="items"
+                (filterChange)="onFilterChange($event)"
+                (selectedChange)="values = $event"
+              >
+              </ngx-treeview>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-4 col-sm-12">
+        <div class="form-group">
+          <label>
+            <strong>ngx-dropdown-treeview</strong>
+          </label>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="dropdownEnabled"> Enable/disable
+            </label>
+          </div>
+          <div class="form-group form-inline">
+            <label>buttonClass</label>
+            <select class="form-control mx-sm-3" [(ngModel)]="buttonClass">
+              <option *ngFor="let c of buttonClasses" [value]="c">{{c}}</option>
+            </select>
+          </div>
+          <ngx-dropdown-treeview [config]="config" [items]="items" [buttonClass]="buttonClass"
+            (selectedChange)="values = $event" [disabled]="!dropdownEnabled"
+            [ngxDisabledOnSelector]="'button.dropdown-toggle'" (filterChange)="onFilterChange($event)">
+          </ngx-dropdown-treeview>
+        </div>
+      </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- hierarquie -->
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-light"
+      (click)="modal.close('Close click')"
+    >
+      Fechar
+    </button>
+  </div>
+</ng-template>
