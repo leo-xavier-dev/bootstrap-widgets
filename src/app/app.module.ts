@@ -13,6 +13,8 @@ import { EntidadeV1Component } from './entidade-v1/entidade-v1.component';
 import { TreeviewModule } from 'ngx-treeview';
 import { LoginComponent } from './login/login.component';
 import { ProjectComponent } from './project/project.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ProjectComponent } from './project/project.component';
 
     //Ng
     NgbModule,
-    TreeviewModule.forRoot()
+    TreeviewModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 
   ],
   providers: [],
