@@ -47,6 +47,7 @@ const COUNTRIES: Country[] = [
     BookService
   ]
 })
+
 export class EntidadeV1Component implements OnInit {
 
   //Modal

@@ -4,12 +4,7 @@
 
     <form class="row g-3">
       <div class="col-auto">
-        <input
-          type="password"
-          class="form-control"
-          id="inputPassword2"
-          placeholder="Procurar entidade"
-        />
+        <input type="password" class="form-control" id="inputPassword2" placeholder="Procurar entidade" />
       </div>
       <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Pesquisar</button>
@@ -31,12 +26,7 @@
         <tr *ngFor="let country of countries; index as i">
           <th scope="row">{{ i + 1 }}</th>
           <td>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="flexCheckDefault"
-            />
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
           </td>
           <td>{{ country.nome }}</td>
           <td>{{ country.publico }}</td>
@@ -59,12 +49,7 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Editar Entidades</h4>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    >
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -72,17 +57,10 @@
     <!-- nome da entidade -->
     <div class="row" style="margin-bottom: 20px">
       <div class="col-12">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Nome da Entidade</label
-        >
+        <label for="exampleFormControlInput1" class="form-label">Nome da Entidade</label>
       </div>
       <div class="col-12">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          value="Marcelo Freixo"
-        />
+        <input type="text" class="form-control" id="exampleFormControlInput1" value="Marcelo Freixo" />
       </div>
     </div>
     <!-- nome da entidade -->
@@ -90,33 +68,16 @@
     <!-- fonte de dados -->
     <div class="row" style="margin-bottom: 20px">
       <div class="col-12">
-        <label for="exampleFormControlInput1" class="form-label"
-          >Fonte de dados</label
-        >
+        <label for="exampleFormControlInput1" class="form-label">Fonte de dados</label>
       </div>
       <div class="col-4">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Facebook"
-        />
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Facebook" />
       </div>
       <div class="col-4">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Instagram"
-        />
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Instagram" />
       </div>
       <div class="col-4">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleFormControlInput1"
-          placeholder="Youtube"
-        />
+        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Youtube" />
       </div>
     </div>
     <!-- nome da entidade -->
@@ -169,12 +130,8 @@
               <label>
                 <strong> Hierarquia </strong>
               </label>
-              <ngx-treeview
-                [config]="config"
-                [items]="items"
-                (filterChange)="onFilterChange($event)"
-                (selectedChange)="values = $event"
-              >
+              <ngx-treeview [config]="config" [items]="items" (filterChange)="onFilterChange($event)"
+                (selectedChange)="values = $event">
               </ngx-treeview>
             </div>
           </div>
@@ -207,11 +164,7 @@
     <!-- hierarquie -->
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-light"
-      (click)="modal.close('Close click')"
-    >
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">
       Fechar
     </button>
   </div>
