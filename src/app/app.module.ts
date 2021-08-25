@@ -23,6 +23,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { PromptComponent } from './prompt/prompt.component';
 import { PwaService } from './services/pwa.service';
 
+
 const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt ();
 
 @NgModule({
@@ -48,7 +49,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt (
     //Ng
     NgbModule,
     TreeviewModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true, registrationStrategy: 'registerImmediately' }),
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
 
