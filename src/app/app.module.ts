@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +15,15 @@ import { LoginComponent } from './login/login.component';
 import { ProjectComponent } from './project/project.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+//Material
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { PromptComponent } from './prompt/prompt.component';
+import { PwaService } from './services/pwa.service';
+
+const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt ();
 
 @NgModule({
   declarations: [
@@ -23,7 +32,8 @@ import { environment } from '../environments/environment';
     NavComponent,
     EntidadeV1Component,
     LoginComponent,
-    ProjectComponent
+    ProjectComponent,
+    PromptComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +48,18 @@ import { environment } from '../environments/environment';
     //Ng
     NgbModule,
     TreeviewModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule,
 
+    //Material
+    MatBottomSheetModule
+
+  ],  
+  providers: [
+    {provide: APP_INITIALIZER, useFactory: initializer, deps: [PwaService], multi: true},
   ],
-  providers: [],
   bootstrap: [AppComponent]
+
+  
 })
 export class AppModule { }
