@@ -48,6 +48,7 @@ const initializer = (pwaService: PwaService) => () => pwaService.initPwaPrompt (
     //Ng
     NgbModule,
     TreeviewModule.forRoot(),
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
 
